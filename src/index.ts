@@ -2,8 +2,10 @@ import * as fs from 'fs';
 
 import { isNumber } from 'util';
 
-const days = [
+import * as day1 from './day1';
 
+const days = [
+    day1,
 ];
 
 const day = parseInt(process.argv[2]);
@@ -18,6 +20,7 @@ if (!isNumber(day) || isNaN(day) || day < 0 || day > days.length) {
     console.log('Part 2: ', answer.part2);
 
     function readInput(day: number): string {
-        return fs.readFileSync('inputs/day' + day + '.txt', 'utf8');
+        let input = fs.readFileSync('inputs/day' + day + '.txt', 'utf8');
+        return input.trim();
     }
 }
