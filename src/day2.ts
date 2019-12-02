@@ -1,10 +1,10 @@
 export function part2(numbers: number[]) {
- for (let noun = 0; noun < 100; noun++) {
-   for (let verb = 0; verb < 100; verb++) {
-     if(part1([...numbers], noun, verb) === 19690720)
-       return 100 * noun + verb
-   }
- }
+  for (let noun = 0; noun < 100; noun++) {
+    for (let verb = 0; verb < 100; verb++) {
+      if (part1([...numbers], noun, verb) === 19690720)
+        return 100 * noun + verb
+    }
+  }
 }
 
 export function part1(numbers: number[], noun: number, verb: number) {
@@ -12,7 +12,7 @@ export function part1(numbers: number[], noun: number, verb: number) {
   numbers[2] = verb
   for (let i = 0; i < numbers.length; i += 4) {
     const opcode = numbers[i]
-    
+
     if (opcode === 99) {
       break;
     }
@@ -27,7 +27,7 @@ export function part1(numbers: number[], noun: number, verb: number) {
       numbers[addr] = a * b
     }
   }
-  
+
   return numbers[0]
 }
 
