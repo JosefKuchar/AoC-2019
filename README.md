@@ -1,2 +1,2 @@
-# AoC-2018
-Advent of Code 2018 solutions written in Typescript
+# AoC-2019
+Advent of Code 2019 solutions written in Typescript
