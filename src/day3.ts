@@ -1,8 +1,21 @@
+interface IIntersection {
+  x: number,
+  y: number,
+  steps: number,
+  distance: number
+}
+
+interface IPoint {
+  x: number,
+  y: number,
+  steps: number
+}
+
 export function solve(input: string) {
     const paths = input.split('\n').map(path => path.split(','));
-    let visited = new Set();
-    let intersections = new Array();
-    let path1 = new Array();
+    let visited: Set<string> = new Set();
+    let intersections: IIntersection[] = new Array();
+    let path1: IPoint[] = new Array();
 
     paths.forEach((path, index) => {
         let x = 0;
@@ -55,11 +68,11 @@ export function solve(input: string) {
         part2: intersections
             .map(
                 intersection =>
-                    path1.filter(
+                    path1.find(
                         point =>
                             point.x === intersection.x &&
                             point.y === intersection.y
-                    )[0].steps + intersection.steps
+                    )!.steps + intersection.steps
             )
             .reduce(
                 (acc, steps) => (steps < acc ? steps : acc),
