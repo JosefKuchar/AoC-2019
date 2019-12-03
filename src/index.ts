@@ -4,10 +4,12 @@ import { isNumber } from 'util';
 
 import * as day1 from './day1';
 import * as day2 from './day2';
+import * as day3 from './day3';
 
 const days = [
     day1,
     day2,
+    day3,
 ];
 
 const day = parseInt(process.argv[2]);
