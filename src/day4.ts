@@ -6,22 +6,20 @@ export function solve(input: string) {
   for (let i = range[0]; i <= range[1]; i++) {
     let digits = i.toString().split('').map(Number)
     let groups: number[] = [];
+    let decrease = false;
     digits.reduce((prev, curr) => {
       if (prev === curr) {
         groups[groups.length - 1]++;
       } else {
         groups.push(1)
       }
+
+      if (curr < prev) {
+        decrease = true
+      }
+
       return curr
     }, -1)
-
-    let decrease = false;
-    for (let j = 0; j < digits.length - 1; j++) {
-      if (digits[j] > digits[j + 1]) {
-        decrease = true
-        break
-      }
-    }
 
     if (!decrease) {
       if (groups.some(group => group >= 2)) part1++
