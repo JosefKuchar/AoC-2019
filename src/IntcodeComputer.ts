@@ -18,6 +18,7 @@ export class IntcodeComputer {
   pc: number;
   relativeBase: number;
   halted: boolean;
+  waiting: boolean;
 
   constructor(memory: number[]) {
     this.input = [];
@@ -37,6 +38,7 @@ export class IntcodeComputer {
       this.adjustRelativeBase.bind(this)
     ];
     this.halted = false;
+    this.waiting = false;
     this.relativeBase = 0;
   }
 
@@ -51,8 +53,10 @@ export class IntcodeComputer {
   readInteger(params: IParam[]) {
     if (this.input.length === 0) {
       this.pc -= 2;
+      this.waiting = true;
       return;
     }
+    this.waiting = false;
     this.memory[params[0].address] = this.input.shift()!;
   }
 
